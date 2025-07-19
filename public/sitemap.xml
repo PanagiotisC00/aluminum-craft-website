@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- English Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aluminum-craft-fasouliotis.vercel.app/</loc>
     <lastmod>2025-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="el" href="https://aluminum-craft-fasouliotis.vercel.app/el" />
   </url>
-  
-  <!-- Greek Homepage -->
   <url>
-    <loc>https://aluminum-craft-fasouliotis.vercel.app/el</loc>
+    <loc>https://aluminum-craft-fasouliotis.vercel.app/el/</loc>
     <lastmod>2025-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://aluminum-craft-fasouliotis.vercel.app/" />
   </url>
 </urlset>
