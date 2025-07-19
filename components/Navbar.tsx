@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
@@ -46,8 +47,16 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <Link href="/" className="text-xl font-bold text-primary-900 hover:text-accent-600 transition-colors">
-              Aluminum Craft Cyprus
+            <Link href="/" className="flex items-center space-x-3 text-xl font-bold text-primary-900 hover:text-accent-600 transition-colors">
+              <Image 
+                src="/images/logo_aluminium.png"
+                alt="Aluminum Craft Cyprus Logo"
+                width={45}
+                height={45}
+                className="object-contain"
+              />
+              <span className="hidden sm:inline">Aluminum Craft Cyprus</span>
+              <span className="sm:hidden text-lg">AC Cyprus</span>
             </Link>
           </motion.div>
 
