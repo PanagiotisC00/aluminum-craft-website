@@ -16,4 +16,3 @@ Disallow: /api/
 # Allow important directories
 Allow: /public/
 Allow: /images/
-Allow: /resources/
