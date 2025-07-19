@@ -36,19 +36,19 @@ const HomePage: React.FC = () => {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.aluminumcraftcy.com/" />
+        <meta property="og:url" content={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
-        <meta property="og:image" content="/images/og-image.jpg" />
+        <meta property="og:image" content="https://aluminum-craft-fasouliotis.vercel.app/resources/Aluminium-Fabrication.jpg" />
         <meta property="og:site_name" content="Aluminum Craft Cyprus" />
         <meta property="og:locale" content={currentLanguage === 'el' ? 'el_GR' : 'en_US'} />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://www.aluminumcraftcy.com/" />
+        <meta property="twitter:url" content={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
         <meta property="twitter:title" content={seoTitle} />
         <meta property="twitter:description" content={seoDescription} />
-        <meta property="twitter:image" content="/images/og-image.jpg" />
+        <meta property="twitter:image" content="https://aluminum-craft-fasouliotis.vercel.app/resources/Aluminium-Fabrication.jpg" />
 
         {/* Favicon and App Icons */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -57,12 +57,12 @@ const HomePage: React.FC = () => {
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href={`https://www.aluminumcraftcy.com${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
+        <link rel="canonical" href={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
         
         {/* Alternate Language URLs */}
-        <link rel="alternate" hrefLang="en" href="https://www.aluminumcraftcy.com/" />
-        <link rel="alternate" hrefLang="el" href="https://www.aluminumcraftcy.com/el/" />
-        <link rel="alternate" hrefLang="x-default" href="https://www.aluminumcraftcy.com/" />
+        <link rel="alternate" hrefLang="en" href="https://aluminum-craft-fasouliotis.vercel.app/" />
+        <link rel="alternate" hrefLang="el" href="https://aluminum-craft-fasouliotis.vercel.app/el/" />
+        <link rel="alternate" hrefLang="x-default" href="https://aluminum-craft-fasouliotis.vercel.app/" />
         
         {/* Additional Meta Tags */}
         <meta name="theme-color" content="#3b82f6" />
@@ -78,7 +78,7 @@ const HomePage: React.FC = () => {
               "name": "Aluminum Craft Cyprus",
               "alternateName": ["Aluminium Craft Cyprus", "Cyprus Aluminum Specialist", "Cyprus Aluminum Contractor"],
               "description": seoDescription,
-              "url": "https://www.aluminumcraftcy.com",
+              "url": "https://aluminum-craft-fasouliotis.vercel.app",
               "telephone": "+357-99-123-456",
               "email": "info@aluminumcraftcy.com",
               "address": {
