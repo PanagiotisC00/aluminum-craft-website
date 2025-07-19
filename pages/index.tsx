@@ -8,6 +8,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
 import Gallery from '../components/Gallery';
+import FAQ from '../components/FAQ';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 
@@ -73,8 +74,9 @@ const HomePage: React.FC = () => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
+              "@type": ["LocalBusiness", "Contractor", "HomeAndConstructionBusiness"],
               "name": "Aluminum Craft Cyprus",
+              "alternateName": ["Aluminium Craft Cyprus", "Cyprus Aluminum Specialist", "Cyprus Aluminum Contractor"],
               "description": seoDescription,
               "url": "https://www.aluminumcraftcy.com",
               "telephone": "+357-99-123-456",
@@ -99,6 +101,26 @@ const HomePage: React.FC = () => {
                 },
                 "geoRadius": "50000"
               },
+              "knowsAbout": [
+                "Aluminum Fabrication",
+                "Aluminium Fabrication",
+                "Custom Aluminum Work",
+                "Aluminum Installation",
+                "Metal Fabrication",
+                "Window Installation Cyprus",
+                "Door Installation Cyprus",
+                "Railing Fabrication",
+                "Aluminum Contractor Services"
+              ],
+              "serviceType": [
+                "Aluminum Fabrication",
+                "Aluminium Fabrication", 
+                "Metal Fabrication",
+                "Window Installation",
+                "Door Installation",
+                "Railing Installation",
+                "Contractor Services"
+              ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Aluminum Fabrication Services",
@@ -107,28 +129,40 @@ const HomePage: React.FC = () => {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Aluminum Windows & Doors"
+                      "name": "Aluminum Windows & Doors",
+                      "description": "Custom aluminum and aluminium window setup and door installation across Cyprus",
+                      "serviceType": "Window Installation",
+                      "areaServed": ["Nicosia", "Limassol", "Larnaca", "Paphos", "Famagusta"]
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Railings & Balconies"
+                      "name": "Railings & Balconies",
+                      "description": "Professional aluminum railing fabrication and custom balcony setup",
+                      "serviceType": "Railing Installation",
+                      "areaServed": ["Nicosia", "Limassol", "Larnaca", "Paphos", "Famagusta"]
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Rolling Shutters"
+                      "name": "Rolling Shutters",
+                      "description": "Aluminum rolling shutter installation and maintenance services",
+                      "serviceType": "Shutter Installation",
+                      "areaServed": ["Nicosia", "Limassol", "Larnaca", "Paphos", "Famagusta"]
                     }
                   },
                   {
                     "@type": "Offer",
                     "itemOffered": {
                       "@type": "Service",
-                      "name": "Repairs & Maintenance"
+                      "name": "Repairs & Maintenance",
+                      "description": "Expert aluminum repair and maintenance services across Cyprus",
+                      "serviceType": "Maintenance Service",
+                      "areaServed": ["Nicosia", "Limassol", "Larnaca", "Paphos", "Famagusta"]
                     }
                   }
                 ]
@@ -147,6 +181,7 @@ const HomePage: React.FC = () => {
           <About />
           <Services />
           <Gallery />
+          <FAQ />
           <ContactForm />
         </main>
         
