@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -6,10 +7,12 @@ import {
   EnvelopeIcon, 
   MapPinIcon 
 } from '@heroicons/react/24/outline';
+import LegalModal from './LegalModal';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
 
   // Handle smooth scrolling to sections
   const handleNavClick = (href: string) => {
@@ -186,17 +189,35 @@ const Footer: React.FC = () => {
 
             {/* Legal Links */}
             <div className="flex items-center space-x-4 text-sm">
-              <a href="#" className="text-primary-300 hover:text-white transition-colors">
+              <button 
+                onClick={() => setActiveModal('privacy')}
+                className="text-primary-300 hover:text-white transition-colors cursor-pointer"
+              >
                 {t('footer.links.privacy')}
-              </a>
+              </button>
               <span className="text-primary-500">|</span>
-              <a href="#" className="text-primary-300 hover:text-white transition-colors">
+              <button 
+                onClick={() => setActiveModal('terms')}
+                className="text-primary-300 hover:text-white transition-colors cursor-pointer"
+              >
                 {t('footer.links.terms')}
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Legal Modals */}
+      <LegalModal 
+        isOpen={activeModal === 'privacy'}
+        onClose={() => setActiveModal(null)}
+        type="privacy"
+      />
+      <LegalModal 
+        isOpen={activeModal === 'terms'}
+        onClose={() => setActiveModal(null)}
+        type="terms"
+      />
     </footer>
   );
 };

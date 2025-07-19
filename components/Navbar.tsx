@@ -51,9 +51,9 @@ const Navbar: React.FC = () => {
               <Image 
                 src="/images/logo_aluminium.png"
                 alt="Aluminum Craft Cyprus Logo"
-                width={45}
-                height={45}
-                className="object-contain"
+                width={36}
+                height={36}
+                className="object-contain rounded-lg"
               />
               <span className="hidden sm:inline">Aluminum Craft Cyprus</span>
               <span className="sm:hidden text-lg">AC Cyprus</span>
