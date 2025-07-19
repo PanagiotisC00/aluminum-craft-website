@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
             }
           }}
         >
-          <span className="text-sm text-gray-300 mb-2">Scroll Down</span>
+          <span className="text-sm text-gray-300 mb-2">{t('hero.scrollDown')}</span>
           <svg
             className="w-6 h-6 text-accent-300"
             fill="none"

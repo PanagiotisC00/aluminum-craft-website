@@ -70,11 +70,11 @@ const Gallery: React.FC = () => {
 
   // Filter categories
   const categories = [
-    { key: 'all', label: 'All Projects' },
-    { key: 'windows', label: 'Windows & Doors' },
-    { key: 'railings', label: 'Railings' },
-    { key: 'shutters', label: 'Shutters' },
-    { key: 'repairs', label: 'Repairs' }
+    { key: 'all', label: t('gallery.categories.all') },
+    { key: 'windows', label: t('gallery.categories.windows') },
+    { key: 'railings', label: t('gallery.categories.railings') },
+    { key: 'shutters', label: t('gallery.categories.shutters') },
+    { key: 'repairs', label: t('gallery.categories.repairs') }
   ];
 
   // Filter items based on selected category
@@ -200,7 +200,7 @@ const Gallery: React.FC = () => {
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
                     />
                   </svg>
-                  <p className="text-sm">View Image</p>
+                  <p className="text-sm">{t('gallery.viewImage')}</p>
                 </div>
               </div>
             </motion.div>
@@ -229,6 +229,7 @@ const Gallery: React.FC = () => {
                 <button
                   onClick={() => setSelectedImage(null)}
                   className="absolute top-4 right-4 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+                  aria-label={t('aria.closeLightbox')}
                 >
                   <XMarkIcon className="h-6 w-6" />
                 </button>
@@ -237,6 +238,7 @@ const Gallery: React.FC = () => {
                 <button
                   onClick={handlePrevImage}
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+                  aria-label={t('aria.previousImage')}
                 >
                   <ChevronLeftIcon className="h-6 w-6" />
                 </button>
@@ -244,6 +246,7 @@ const Gallery: React.FC = () => {
                 <button
                   onClick={handleNextImage}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
+                  aria-label={t('aria.nextImage')}
                 >
                   <ChevronRightIcon className="h-6 w-6" />
                 </button>

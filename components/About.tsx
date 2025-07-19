@@ -122,7 +122,7 @@ const About: React.FC = () => {
               }}
               className="btn-primary mb-12"
             >
-              Get Free Quote
+              {t('about.cta')}
             </button>
           </motion.div>
         </div>
@@ -136,7 +136,7 @@ const About: React.FC = () => {
           className="mt-20"
         >
           <div className="text-center mb-12">
-            <h3 className="heading-3 mb-4">Why Choose Us</h3>
+            <h3 className="heading-3 mb-4">{t('about.whyChoose')}</h3>
             <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-accent-600 mx-auto rounded-full"></div>
           </div>
 

@@ -127,7 +127,7 @@ const Services: React.FC = () => {
           className="text-center mt-16"
         >
           <p className="text-lg text-primary-600 mb-8 max-w-2xl mx-auto">
-            Need a custom aluminum solution? Our experienced team can handle projects of any size and complexity.
+            {t('services.ctaText')}
           </p>
           <button
             onClick={() => {
@@ -138,7 +138,7 @@ const Services: React.FC = () => {
             }}
             className="btn-primary text-lg px-8 py-4"
           >
-            Get Free Consultation
+            {t('services.ctaButton')}
           </button>
         </motion.div>
       </div>

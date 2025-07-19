@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
                 className="flex items-center text-primary-600 hover:text-accent-600 p-2 rounded-md transition-colors"
-                aria-label="Change language"
+                aria-label={t('aria.changeLanguage')}
               >
                 <GlobeAltIcon className="h-5 w-5" />
                 <span className="ml-1 text-sm font-medium">
@@ -133,7 +133,7 @@ const Navbar: React.FC = () => {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-primary-600 hover:text-accent-600 hover:bg-primary-50 transition-colors"
-              aria-label="Toggle menu"
+              aria-label={t('aria.toggleMenu')}
             >
               {isMenuOpen ? (
                 <XMarkIcon className="h-6 w-6" />

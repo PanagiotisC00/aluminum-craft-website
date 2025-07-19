@@ -60,25 +60,25 @@ const ContactForm: React.FC = () => {
   const contactInfo = [
     {
       icon: PhoneIcon,
-      label: 'Phone',
+      label: t('contact.labels.phone'),
       value: t('contact.info.phone'),
       href: `tel:${t('contact.info.phone')}`,
     },
     {
       icon: EnvelopeIcon,
-      label: 'Email',
+      label: t('contact.labels.email'),
       value: t('contact.info.email'),
       href: `mailto:${t('contact.info.email')}`,
     },
     {
       icon: MapPinIcon,
-      label: 'Location',
+      label: t('contact.labels.location'),
       value: t('contact.info.address'),
       href: null,
     },
     {
       icon: ClockIcon,
-      label: 'Hours',
+      label: t('contact.labels.hours'),
       value: t('contact.info.hours'),
       href: null,
     },
@@ -137,7 +137,7 @@ const ContactForm: React.FC = () => {
             className="space-y-8"
           >
             <div className="bg-white rounded-2xl shadow-lg p-8 border border-primary-100">
-              <h3 className="heading-3 text-2xl mb-8 text-center">Get In Touch</h3>
+              <h3 className="heading-3 text-2xl mb-8 text-center">{t('contact.cardTitles.getInTouch')}</h3>
               
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
@@ -183,7 +183,7 @@ const ContactForm: React.FC = () => {
 
               {/* Social Media Links */}
               <div className="mt-8 pt-6 border-t border-primary-200">
-                <h4 className="text-sm font-semibold text-primary-700 mb-4">Follow Us</h4>
+                <h4 className="text-sm font-semibold text-primary-700 mb-4">{t('footer.followUs')}</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
                     <motion.a
@@ -214,7 +214,7 @@ const ContactForm: React.FC = () => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl shadow-lg p-8 border border-primary-100"
           >
-            <h3 className="heading-3 text-2xl mb-8 text-center">Send Message</h3>
+            <h3 className="heading-3 text-2xl mb-8 text-center">{t('contact.cardTitles.sendMessage')}</h3>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Name Field */}
@@ -224,7 +224,7 @@ const ContactForm: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  {...register('name', { required: 'Name is required' })}
+                  {...register('name', { required: t('contact.form.validation.nameRequired') })}
                   className={`form-input ${errors.name ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}
                   placeholder="John Doe"
                 />
@@ -241,10 +241,10 @@ const ContactForm: React.FC = () => {
                 <input
                   type="email"
                   {...register('email', { 
-                    required: 'Email is required',
+                    required: t('contact.form.validation.emailRequired'),
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: 'Invalid email address'
+                      message: t('contact.form.validation.emailInvalid')
                     }
                   })}
                   className={`form-input ${errors.email ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}
@@ -275,9 +275,9 @@ const ContactForm: React.FC = () => {
                 </label>
                 <textarea
                   rows={5}
-                  {...register('message', { required: 'Message is required' })}
+                  {...register('message', { required: t('contact.form.validation.messageRequired') })}
                   className={`form-input ${errors.message ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="Tell us about your aluminum fabrication needs..."
+                  placeholder={t('contact.form.messagePlaceholder')}
                 />
                 {errors.message && (
                   <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
