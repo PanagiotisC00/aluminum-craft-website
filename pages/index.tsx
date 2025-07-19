@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
         <meta property="og:url" content={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
-        <meta property="og:image" content="https://aluminum-craft-fasouliotis.vercel.app/resources/Aluminium-Fabrication.jpg" />
+        <meta property="og:image" content="https://aluminum-craft-fasouliotis.vercel.app/images/aluminum-hero-bg.jpg" />
         <meta property="og:site_name" content="Aluminum Craft Cyprus" />
         <meta property="og:locale" content={currentLanguage === 'el' ? 'el_GR' : 'en_US'} />
 
@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
         <meta property="twitter:url" content={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
         <meta property="twitter:title" content={seoTitle} />
         <meta property="twitter:description" content={seoDescription} />
-        <meta property="twitter:image" content="https://aluminum-craft-fasouliotis.vercel.app/resources/Aluminium-Fabrication.jpg" />
+        <meta property="twitter:image" content="https://aluminum-craft-fasouliotis.vercel.app/images/aluminum-hero-bg.jpg" />
 
         {/* Favicon and App Icons */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
