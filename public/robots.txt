@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.aluminumcraftcy.com
+
+# Sitemaps
+Sitemap: https://www.aluminumcraftcy.com/sitemap.xml

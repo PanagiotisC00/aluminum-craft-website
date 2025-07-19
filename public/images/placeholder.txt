@@ -1,0 +1,33 @@
+REQUIRED IMAGES FOR ALUMINUM FABRICATOR WEBSITE
+==============================================
+
+This file documents the images needed for the website. In production, replace these with actual high-quality images.
+
+HERO SECTION:
+- aluminum-hero-bg.jpg (1920x1080) - Modern aluminum windows/doors installation
+
+ABOUT SECTION:
+- about-workshop.jpg (800x600) - Aluminum fabrication workshop with workers
+
+GALLERY SECTION:
+- gallery/windows-1.jpg (600x400) - Modern aluminum windows
+- gallery/windows-2.jpg (600x400) - Energy-efficient aluminum doors
+- gallery/windows-3.jpg (600x400) - Commercial aluminum facade
+- gallery/railings-1.jpg (600x400) - Elegant balcony railings
+- gallery/railings-2.jpg (600x400) - Custom stair railings
+- gallery/shutters-1.jpg (600x400) - Automated rolling shutters
+- gallery/shutters-2.jpg (600x400) - Security rolling shutters
+- gallery/repairs-1.jpg (600x400) - Professional aluminum repairs
+
+SEO AND SOCIAL:
+- og-image.jpg (1200x630) - Open Graph image for social sharing
+- favicon.ico - Website favicon
+- favicon-16x16.png - Small favicon
+- favicon-32x32.png - Medium favicon
+- apple-touch-icon.png (180x180) - Apple touch icon
+
+NOTES:
+- All images should be optimized for web (WebP format preferred)
+- Use descriptive alt text for accessibility
+- Ensure images showcase aluminum fabrication work in Cyprus
+- Maintain consistent professional aesthetic across all images 
