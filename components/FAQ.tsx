@@ -30,6 +30,10 @@ const FAQ: React.FC = () => {
     {
       question: t('faq.experience.question'),
       answer: t('faq.experience.answer'),
+    },
+    {
+      question: t('faq.warranty.question'),
+      answer: t('faq.warranty.answer'),
     }
   ];
 
