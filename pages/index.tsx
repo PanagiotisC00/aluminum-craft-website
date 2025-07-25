@@ -43,29 +43,17 @@ const HomePage: React.FC = () => {
         <meta property="og:site_name" content="Aluminum Craft Cyprus" />
         <meta property="og:locale" content={currentLanguage === 'el' ? 'el_GR' : 'en_US'} />
 
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
-        <meta property="twitter:title" content={seoTitle} />
-        <meta property="twitter:description" content={seoDescription} />
-        <meta property="twitter:image" content="https://aluminum-craft-fasouliotis.vercel.app/images/aluminum-hero-bg.jpg" />
-
-        {/* Favicon and App Icons - Enhanced for Google */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={seoDescription} />
+        <meta name="twitter:image" content="https://aluminum-craft-fasouliotis.vercel.app/images/aluminum-hero-bg.jpg" />
+        
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        
-        {/* Additional Favicon Formats for Better Google Recognition */}
-        <link rel="shortcut icon" href="/favicon.ico" />
-        
-        {/* Theme Colors for Mobile and PWA */}
-        <meta name="theme-color" content="#1e40af" />
-        <meta name="msapplication-TileColor" content="#1e40af" />
-        <meta name="msapplication-TileImage" content="/apple-touch-icon.png" />
-        
-        {/* Web Manifest for Enhanced Favicon Recognition */}
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         
         {/* Canonical URL */}
         <link rel="canonical" href={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
@@ -76,7 +64,6 @@ const HomePage: React.FC = () => {
         <link rel="alternate" hrefLang="x-default" href="https://aluminum-craft-fasouliotis.vercel.app/" />
         
         {/* Additional Meta Tags */}
-        <meta name="theme-color" content="#3b82f6" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         {/* JSON-LD Structured Data */}

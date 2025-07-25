@@ -2,17 +2,8 @@
 User-agent: *
 Allow: /
 
-# Host
-Host: https://aluminum-craft-fasouliotis.vercel.app
-
 # Sitemaps
 Sitemap: https://aluminum-craft-fasouliotis.vercel.app/sitemap.xml
 
-# Block admin and private areas
-Disallow: /admin/
-Disallow: /_next/
-Disallow: /api/
-
-# Allow important directories
-Allow: /public/
-Allow: /images/
+# Block admin or sensitive areas if any (none for this site)
+# Disallow: /admin/
