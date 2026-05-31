@@ -1,5 +1,5 @@
-import React from 'react';
-import { useTranslation } from 'next-i18next';
+import React, { useEffect, useId, useRef } from 'react';
+import { useTranslation } from 'next-i18next/pages';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -9,10 +9,43 @@ interface LegalModalProps {
   type: 'privacy' | 'terms';
 }
 
+type LegalSection = Record<string, string>;
+
+interface LegalContent {
+  title: string;
+  lastUpdated: string;
+  intro: string;
+  contact: string;
+  dataCollection: LegalSection;
+  dataUse: LegalSection;
+  dataProtection: LegalSection;
+  services: LegalSection;
+  projectTerms: LegalSection;
+  website: LegalSection;
+  liability: LegalSection;
+}
+
 const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
   const { t } = useTranslation('common');
+  const titleId = useId();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  const content = t(`footer.legal.${type}`, { returnObjects: true }) as any;
+  const content = t(`footer.legal.${type}`, { returnObjects: true }) as LegalContent;
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    closeButtonRef.current?.focus();
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -37,12 +70,15 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="bg-white rounded-xl shadow-2xl max-w-md sm:max-w-lg md:max-w-xl lg:max-w-4xl max-h-[85vh] w-full overflow-hidden mx-4 sm:mx-6"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={titleId}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 sm:p-5 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-accent-50">
               <div className="flex-1 min-w-0 pr-3">
-                <h2 className="text-lg sm:text-xl font-bold text-primary-900 leading-tight truncate">
+                <h2 id={titleId} className="text-lg sm:text-xl font-bold text-primary-900 leading-tight truncate">
                   {content.title}
                 </h2>
                 <p className="text-xs text-primary-600 mt-1 truncate">
@@ -51,6 +87,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               </div>
               <div className="flex-shrink-0 ml-2">
                 <button
+                  ref={closeButtonRef}
                   onClick={onClose}
                   className="p-2 text-gray-500 hover:text-gray-700 hover:bg-red-50 hover:border-red-200 rounded-lg transition-all duration-200 touch-manipulation min-w-[36px] min-h-[36px] flex items-center justify-center border-2 border-gray-200 bg-white shadow-sm hover:shadow-md"
                   aria-label={t('aria.closeLightbox')}

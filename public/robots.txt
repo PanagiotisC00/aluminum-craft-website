@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Sitemaps
-Sitemap: https://aluminum-craft-fasouliotis.vercel.app/sitemap.xml
-
-# Block admin or sensitive areas if any (none for this site)
-# Disallow: /admin/

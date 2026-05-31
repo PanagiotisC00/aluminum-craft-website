@@ -1,5 +1,5 @@
 import { AppProps } from 'next/app';
-import { appWithTranslation } from 'next-i18next';
+import { appWithTranslation } from 'next-i18next/pages';
 import { Analytics } from '@vercel/analytics/next';
 import '../styles/globals.css';
 

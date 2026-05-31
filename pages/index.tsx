@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations';
+import { useTranslation } from 'next-i18next/pages';
 import Head from 'next/head';
 
 import Navbar from '../components/Navbar';
@@ -20,6 +20,9 @@ const HomePage: React.FC = () => {
   const seoDescription = t('seo.description');
   const seoKeywords = t('seo.keywords');
   const currentLanguage = i18n.language;
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000').replace(/\/$/, '');
+  const localizedPath = currentLanguage !== 'en' ? `/${currentLanguage}` : '';
+  const localizedUrl = localizedPath ? `${siteUrl}${localizedPath}` : `${siteUrl}/`;
 
   return (
     <>
@@ -36,10 +39,10 @@ const HomePage: React.FC = () => {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
+        <meta property="og:url" content={localizedUrl} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
-        <meta property="og:image" content="https://aluminum-craft-fasouliotis.vercel.app/images/aluminum-hero-bg.jpg" />
+        <meta property="og:image" content={`${siteUrl}/images/aluminum-hero-bg.jpg`} />
         <meta property="og:site_name" content="Aluminum Craft Cyprus" />
         <meta property="og:locale" content={currentLanguage === 'el' ? 'el_GR' : 'en_US'} />
 
@@ -47,7 +50,7 @@ const HomePage: React.FC = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
-        <meta name="twitter:image" content="https://aluminum-craft-fasouliotis.vercel.app/images/aluminum-hero-bg.jpg" />
+        <meta name="twitter:image" content={`${siteUrl}/images/aluminum-hero-bg.jpg`} />
         
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -57,12 +60,12 @@ const HomePage: React.FC = () => {
         <link rel="manifest" href="/site.webmanifest" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href={`https://aluminum-craft-fasouliotis.vercel.app${currentLanguage !== 'en' ? `/${currentLanguage}` : ''}`} />
+        <link rel="canonical" href={localizedUrl} />
         
         {/* Alternate Language URLs */}
-        <link rel="alternate" hrefLang="en" href="https://aluminum-craft-fasouliotis.vercel.app/" />
-        <link rel="alternate" hrefLang="el" href="https://aluminum-craft-fasouliotis.vercel.app/el/" />
-        <link rel="alternate" hrefLang="x-default" href="https://aluminum-craft-fasouliotis.vercel.app/" />
+        <link rel="alternate" hrefLang="en" href={`${siteUrl}/`} />
+        <link rel="alternate" hrefLang="el" href={`${siteUrl}/el/`} />
+        <link rel="alternate" hrefLang="x-default" href={`${siteUrl}/`} />
         
         {/* Additional Meta Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -77,7 +80,7 @@ const HomePage: React.FC = () => {
               "name": "Aluminum Craft Cyprus",
               "alternateName": ["Aluminium Craft Cyprus", "Cyprus Aluminum Specialist", "Cyprus Aluminum Contractor"],
               "description": seoDescription,
-              "url": "https://aluminum-craft-fasouliotis.vercel.app",
+              "url": siteUrl,
               "telephone": "+357-99-123-456",
               "email": "info@aluminumcraftcy.com",
               "address": {

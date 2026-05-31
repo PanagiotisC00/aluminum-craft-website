@@ -44,11 +44,11 @@ Vercel automatically detects your Next.js project:
 | Setting | Value | Status |
 |---------|-------|--------|
 | **Framework Preset** | Next.js | ✅ Auto-detected |
-| **Build Command** | `npm run build` | ✅ Auto-filled |
+| **Build Command** | `pnpm run build` | ✅ Auto-filled |
 | **Output Directory** | `.next` | ✅ Auto-filled |
-| **Install Command** | `npm install` | ✅ Auto-filled |
+| **Install Command** | `corepack pnpm install --frozen-lockfile` or auto-detected from `pnpm-lock.yaml` | ✅ Auto-filled |
 
-**⚠️ Important:** Don't change any settings - they're perfect as-is!
+**⚠️ Important:** Keep the project on pnpm through Corepack. If Vercel has an old npm install command override, remove it so the `pnpm-lock.yaml` is auto-detected or set it to `corepack pnpm install --frozen-lockfile`.
 
 ### **Step 4: Deploy**
 1. **Click:** "Deploy" button
@@ -97,7 +97,7 @@ Every time you push code to GitHub:
 
 ### **How to Update Website:**
 1. **Make changes** locally
-2. **Test locally:** `npm run dev`
+2. **Test locally:** `corepack pnpm run dev`
 3. **Push to GitHub:** `git add . && git commit -m "Update" && git push`
 4. **Vercel auto-deploys** the changes
 
@@ -158,7 +158,7 @@ Every time you push code to GitHub:
 
 #### **Build Failed:**
 - ✅ Check build logs in Vercel dashboard
-- ✅ Ensure `npm run build` works locally
+- ✅ Ensure `corepack pnpm run build` works locally
 - ✅ Check for missing dependencies
 
 #### **Images Not Loading:**
@@ -167,8 +167,8 @@ Every time you push code to GitHub:
 - ✅ Verify image formats (jpg, png, webp)
 
 #### **Contact Form Not Working:**
-- ✅ Update Formspree endpoint in `components/ContactForm.tsx`
-- ✅ Test form on live site (not just locally)
+- ✅ Set `NEXT_PUBLIC_FORMSPREE_ID` in Vercel to the production Formspree form ID
+- ✅ Use a local/test Formspree ID when testing from localhost
 
 #### **Language Switching Issues:**
 - ✅ Check translation files in `public/locales/`

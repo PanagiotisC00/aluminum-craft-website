@@ -1,6 +1,5 @@
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next/pages';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { PhoneIcon, ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/outline';
 
 const Hero: React.FC = () => {

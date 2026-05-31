@@ -38,6 +38,8 @@ pids
 
 # Coverage directory used by tools like istanbul
 coverage/
+playwright-report/
+test-results/
 
 # Dependency directories
 jspm_packages/
@@ -46,4 +48,13 @@ jspm_packages/
 .npm
 
 # Optional eslint cache
-.eslintcache 
+.eslintcache
+
+# TypeScript incremental cache
+*.tsbuildinfo
+
+# Local agent instructions
+AGENTS.md
+universal-code-quality-security-testing-agent-prompt.md
+bug-buster-master-playbook.md
+bug-buster-ai-agent-prompt.md

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next/pages';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -54,6 +54,7 @@ const Navbar: React.FC = () => {
                 width={36}
                 height={36}
                 className="object-contain rounded-lg"
+                style={{ width: '36px', height: '36px' }}
               />
               <span className="hidden sm:inline">Aluminum Craft Cyprus</span>
               <span className="sm:hidden text-lg">AC Cyprus</span>
@@ -100,7 +101,7 @@ const Navbar: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
+                    className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg ring-1 ring-black/5"
                   >
                     <div className="py-1">
                       <button

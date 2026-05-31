@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'next-i18next/pages';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
@@ -15,6 +15,7 @@ const Gallery: React.FC = () => {
   const { t } = useTranslation('common');
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const lightboxCloseButtonRef = useRef<HTMLButtonElement>(null);
 
   // Sample gallery items - in production, these would come from a CMS or API
   const galleryItems: GalleryItem[] = [
@@ -97,6 +98,21 @@ const Gallery: React.FC = () => {
     setSelectedImage(filteredItems[nextIndex]);
   };
 
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    lightboxCloseButtonRef.current?.focus();
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [selectedImage]);
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -172,10 +188,12 @@ const Gallery: React.FC = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
           {filteredItems.map((item) => (
-            <motion.div
+            <motion.button
               key={item.id}
+              type="button"
               variants={itemVariants}
-              className="group relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+              className="group relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2"
+              aria-label={item.alt}
               onClick={() => setSelectedImage(item)}
             >
               <Image
@@ -203,7 +221,7 @@ const Gallery: React.FC = () => {
                   <p className="text-sm">{t('gallery.viewImage')}</p>
                 </div>
               </div>
-            </motion.div>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -215,6 +233,9 @@ const Gallery: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="gallery-overlay"
+              role="dialog"
+              aria-modal="true"
+              aria-label={selectedImage.alt}
               onClick={() => setSelectedImage(null)}
             >
               <motion.div
@@ -227,6 +248,7 @@ const Gallery: React.FC = () => {
               >
                 {/* Close Button */}
                 <button
+                  ref={lightboxCloseButtonRef}
                   onClick={() => setSelectedImage(null)}
                   className="absolute top-4 right-4 z-10 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
                   aria-label={t('aria.closeLightbox')}

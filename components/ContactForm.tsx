@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next/pages';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { 
   PhoneIcon, 
   EnvelopeIcon, 
@@ -9,33 +10,39 @@ import {
   ClockIcon,
   PaperAirplaneIcon 
 } from '@heroicons/react/24/outline';
-
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
+import { ContactFormData, createContactFormSchema } from '../lib/contactFormSchema';
 
 const ContactForm: React.FC = () => {
   const { t } = useTranslation('common');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+  const formspreeEndpoint =
+    formspreeId && formspreeId !== 'your_formspree_id'
+      ? `https://formspree.io/f/${formspreeId}`
+      : null;
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm<FormData>();
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(createContactFormSchema(t)),
+  });
 
   // Handle form submission with Formspree
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formspree.io/f/xkgwbvdr', {
+      if (!formspreeEndpoint) {
+        setSubmitStatus('error');
+        return;
+      }
+
+      const response = await fetch(formspreeEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +56,7 @@ const ContactForm: React.FC = () => {
       } else {
         setSubmitStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -219,12 +226,13 @@ const ContactForm: React.FC = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Name Field */}
               <div>
-                <label className="form-label">
+                <label className="form-label" htmlFor="contact-name">
                   {t('contact.form.name')} <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="contact-name"
                   type="text"
-                  {...register('name', { required: t('contact.form.validation.nameRequired') })}
+                  {...register('name')}
                   className={`form-input ${errors.name ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}
                   placeholder="John Doe"
                 />
@@ -235,18 +243,13 @@ const ContactForm: React.FC = () => {
 
               {/* Email Field */}
               <div>
-                <label className="form-label">
+                <label className="form-label" htmlFor="contact-email">
                   {t('contact.form.email')} <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="contact-email"
                   type="email"
-                  {...register('email', { 
-                    required: t('contact.form.validation.emailRequired'),
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: t('contact.form.validation.emailInvalid')
-                    }
-                  })}
+                  {...register('email')}
                   className={`form-input ${errors.email ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}
                   placeholder="john@example.com"
                 />
@@ -257,10 +260,11 @@ const ContactForm: React.FC = () => {
 
               {/* Phone Field */}
               <div>
-                <label className="form-label">
+                <label className="form-label" htmlFor="contact-phone">
                   {t('contact.form.phone')}
                 </label>
                 <input
+                  id="contact-phone"
                   type="tel"
                   {...register('phone')}
                   className="form-input"
@@ -270,12 +274,13 @@ const ContactForm: React.FC = () => {
 
               {/* Message Field */}
               <div>
-                <label className="form-label">
+                <label className="form-label" htmlFor="contact-message">
                   {t('contact.form.message')} <span className="text-red-500">*</span>
                 </label>
                 <textarea
+                  id="contact-message"
                   rows={5}
-                  {...register('message', { required: t('contact.form.validation.messageRequired') })}
+                  {...register('message')}
                   className={`form-input ${errors.message ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : ''}`}
                   placeholder={t('contact.form.messagePlaceholder')}
                 />

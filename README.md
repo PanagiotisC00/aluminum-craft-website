@@ -13,7 +13,7 @@ A professional, SEO-optimized, bilingual (English & Greek) brochure-style websit
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 with TypeScript
+- **Framework**: Next.js 16 with TypeScript
 - **Styling**: Tailwind CSS with custom design system
 - **Internationalization**: next-i18next
 - **Animations**: Framer Motion
@@ -52,7 +52,7 @@ airs_company/
 ### 1. Install Dependencies
 
 ```bash
-npm install
+corepack pnpm install
 ```
 
 ### 2. Add Images
@@ -63,15 +63,13 @@ Place the required images in the `public/images/` directory. See `public/images/
 
 1. Sign up at [Formspree.io](https://formspree.io)
 2. Create a new form and get your form ID
-3. Update the form action URL in `components/ContactForm.tsx`:
-   ```typescript
-   const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-   ```
+3. Set `NEXT_PUBLIC_FORMSPREE_ID` in `.env.local` for local testing, or in Vercel for production.
+4. Keep the placeholder value locally if you do not want local submissions to reach Formspree.
 
 ### 4. Development Server
 
 ```bash
-npm run dev
+corepack pnpm run dev
 ```
 
 Visit `http://localhost:3000` to see the website.
@@ -79,8 +77,22 @@ Visit `http://localhost:3000` to see the website.
 ### 5. Build for Production
 
 ```bash
-npm run build
+corepack pnpm run build
 ```
+
+## 🧪 Local Testing
+
+Run all tests locally only. Do not point tests at Vercel preview, staging, production, or any external deployment URL.
+
+```bash
+corepack pnpm run lint
+corepack pnpm run typecheck
+corepack pnpm run test:unit
+corepack pnpm run test:e2e
+corepack pnpm run build
+```
+
+Playwright starts the app on `http://127.0.0.1:3001` with a placeholder Formspree ID so E2E tests do not submit to the live form endpoint. See `doc/testing.md` for the full local testing runbook.
 
 ## 🌐 Deployment
 
@@ -88,16 +100,15 @@ npm run build
 
 1. Push your code to GitHub
 2. Connect your repository to [Vercel](https://vercel.com)
-3. Configure environment variables if needed
-4. Deploy automatically on every push
+3. Configure environment variables for the public site URL and Formspree form ID
+4. Let Vercel detect pnpm from `pnpm-lock.yaml`, or set the install command to `corepack pnpm install --frozen-lockfile`
+5. Deploy automatically on every push
 
 ### Custom Domain Setup
 
 1. Purchase your domain (e.g., `aluminumcraftcy.com`)
 2. Configure DNS settings in Vercel
-3. Update the site URL in the following files:
-   - `pages/index.tsx` (canonical URLs)
-   - `next-sitemap.config.js` (sitemap)
+3. Set `NEXT_PUBLIC_SITE_URL` in Vercel to the final public origin, for example `https://www.example.com`
 
 ## 🔧 Configuration
 
@@ -107,6 +118,7 @@ Create a `.env.local` file for local development:
 
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
+# Leave this placeholder locally to prevent accidental live form submissions.
 NEXT_PUBLIC_FORMSPREE_ID=your_formspree_id
 ```
 
@@ -124,7 +136,7 @@ For production, set these in your hosting provider's environment variables.
 
 #### SEO & Meta Data
 - Update structured data in `pages/index.tsx`
-- Configure sitemap in `next-sitemap.config.js`
+- The sitemap is served from `pages/api/sitemap.xml.js` and uses `NEXT_PUBLIC_SITE_URL`
 
 ## 📧 Contact Form Setup
 
@@ -132,8 +144,8 @@ The contact form uses Formspree for backend handling. No server required!
 
 1. Create a free [Formspree](https://formspree.io) account
 2. Set up a new form project
-3. Replace the form endpoint in `components/ContactForm.tsx`
-4. Test form submissions
+3. Set `NEXT_PUBLIC_FORMSPREE_ID` in `.env.local` or the Vercel dashboard
+4. Test local form behavior only with a local/test Formspree ID
 
 ## 🎨 Design System
 
@@ -209,7 +221,7 @@ The contact form uses Formspree for backend handling. No server required!
 
 ## 🛡️ Security
 
-- Content Security Policy headers
+- Security headers, including Content Security Policy
 - XSS protection
 - Secure form handling
 - Safe external link policies

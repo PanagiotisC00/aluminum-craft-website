@@ -50,7 +50,7 @@ tailwind.config.js
 
 ## 🚀 Deployment Workflow
 
-1. Develop locally with `npm run dev`
+1. Develop locally with `corepack pnpm run dev`
 2. Push to GitHub or GitLab
 3. Connect repository to [Vercel](https://vercel.com)
 4. Set up custom domain (optional)
@@ -98,7 +98,7 @@ Use an external service to handle form submissions:
 - Use `next/head` to define:
   - Title tags, meta descriptions, canonical URLs.
   - Open Graph (OG) tags for social sharing.
-- Create a custom `sitemap.xml` using [`next-sitemap`](https://github.com/iamvishnusankar/next-sitemap).
+- Serve `sitemap.xml` from the custom Next.js API route at `pages/api/sitemap.xml.js`, using `NEXT_PUBLIC_SITE_URL` for the public origin.
 - Use semantic HTML (`<section>`, `<header>`, `<article>`, etc.) to improve crawlability.
 - Optimize image loading with Next.js `<Image />` component (automatic resizing and lazy loading).
 - Ensure clean, readable URLs (e.g., `/services`, `/about`, `/el/contact`).

@@ -296,7 +296,7 @@ Your website follows industry best practices and is **safer than most business w
 
 ### **Manual Checks (Optional):**
 - 🔄 **Monthly:** Review Vercel deployment logs
-- 🔄 **Quarterly:** Update dependencies (`npm audit`)
+- 🔄 **Quarterly:** Update dependencies (`corepack pnpm audit`)
 - 🔄 **Annually:** Review and update content and contact information
 
 ---
